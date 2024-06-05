@@ -1,4 +1,4 @@
-package org.example;
+package org.atakoutene;
 
 public class Main {
     public static void main(String[] args) {
