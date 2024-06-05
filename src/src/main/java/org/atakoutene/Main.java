@@ -16,7 +16,7 @@ public class Main {
         ArrayList<Integer> sortedList = pool.invoke(task);
         Long endTime = System.currentTimeMillis();
 
-        System.out.println("The sorted elements are: ") ;
+        System.out.println("The sorted elements are: ");
         sortedList.forEach((el) -> {
             System.out.print(el + " ");
         })
