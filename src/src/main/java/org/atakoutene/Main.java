@@ -1,6 +1,7 @@
 package org.atakoutene;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.ForkJoinPool;
@@ -16,6 +17,13 @@ public class Main {
         // Fill the array with random integers
         fillarray(array);
 
+        List<Integer> array2 = array.subList(0, array.size());
+
+        //Sorting and timing using sequential sorting
+        Long startSequentialTime = System.currentTimeMillis();
+        Collections.sort(array2);
+        Long sequentialTime = System.currentTimeMillis() - startSequentialTime;
+
         // Create a ForkJoinPool to manage parallel tasks
         ForkJoinPool pool = new ForkJoinPool();
 
@@ -29,7 +37,10 @@ public class Main {
         List<Integer> sortedList = pool.invoke(task);
 
         // Record the end time for performance measurement
-        Long endTime = System.currentTimeMillis();
+        Long parallelTime = System.currentTimeMillis() - startTime;
+
+        //Compute the speedup
+        double speedup = sequentialTime / parallelTime;
 
         // Print the sorted elements
         System.out.println("The sorted elements are: ");
@@ -38,7 +49,9 @@ public class Main {
         });
 
         // Print the elapsed time
-        System.out.println("\nElapsed Time: " + (endTime - startTime) + "ms");
+        System.out.println("\nElapsed Time for sequential sort: " + sequentialTime + "ms");
+        System.out.println("\nElapsed Time for parallel sort: " + parallelTime + "ms");
+        System.out.println("\nThe speedup is: " + speedup);
     }
 
     /**
