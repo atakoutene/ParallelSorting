@@ -40,7 +40,7 @@ public class Main {
         Long parallelTime = System.currentTimeMillis() - startTime;
 
         //Compute the speedup
-        double speedup = sequentialTime / parallelTime;
+        double speedUp = sequentialTime / parallelTime;
 
         // Print the sorted elements
         System.out.println("The sorted elements are: ");
@@ -51,7 +51,7 @@ public class Main {
         // Print the elapsed time
         System.out.println("\nElapsed Time for sequential sort: " + sequentialTime + "ms");
         System.out.println("\nElapsed Time for parallel sort: " + parallelTime + "ms");
-        System.out.println("\nThe speedup is: " + speedup);
+        System.out.println("\nThe speedup is: " + speedUp);
     }
 
     /**
