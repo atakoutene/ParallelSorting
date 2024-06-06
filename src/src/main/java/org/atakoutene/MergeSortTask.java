@@ -50,6 +50,7 @@ public class MergeSortTask extends RecursiveTask<List<Integer>> {
      *
      * @return the sorted list of integers
      */
+
     @Override
     protected List<Integer> compute() {
         // If the sublist size is below the threshold, sort it directly

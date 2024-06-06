@@ -39,16 +39,16 @@ import java.util.concurrent.ForkJoinPool;
 
 public class Main {
     public static void main(String[] args) {
-        int[] array = {5, 3, 8, 4, 2, 7, 1, 6};
+        List<Integer> array = List.of(5, 3, 8, 4, 2, 7, 1, 6);
 
         ForkJoinPool pool = new ForkJoinPool();
         ParallelMergeSort task = new ParallelMergeSort(array);
 
         pool.invoke(task);
 
-        int[] sortedArray = task.join();
+        List<Integer> sortedArray = task.join();
 
-        System.out.println("Sorted array: " + Arrays.toString(sortedArray));
+        sortedArray.forEach(e -> {System.out::println});
     }
 }
 ```
@@ -61,9 +61,11 @@ The `ForkJoinPool` is used to execute the sorting tasks in parallel. It automati
 
 ```java
 ForkJoinPool pool = new ForkJoinPool();
-ParallelMergeSort task = new ParallelMergeSort(array);
-pool.invoke(task);
-int[] sortedArray = task.join();
+        ParallelMergeSort task = new ParallelMergeSort(array);
+
+        pool.invoke(task);
+
+        List<Integer> sortedArray = task.join();
 ```
 
 ## Performance
