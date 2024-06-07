@@ -59,23 +59,17 @@ public class MergeSortTask extends RecursiveTask<List<Integer>> {
             Collections.sort(nums);
             return nums;
         }
-
         // Find the middle index to split the list
         int mid = (start + end) / 2;
-
         // Create subtasks for the left and right halves
         MergeSortTask leftTask = new MergeSortTask(numbers, start, mid);
         MergeSortTask rightTask = new MergeSortTask(numbers, mid, end);
-
         // Execute the left task asynchronously
         leftTask.fork();
-
         // Execute the right task directly
         List<Integer> right = rightTask.compute();
-
         // Wait for the left task to complete and get the result
         List<Integer> left = leftTask.join();
-
         // Merge the results of the left and right tasks
         return merge(right, left);
     }
